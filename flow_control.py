@@ -1,28 +1,31 @@
-import ast
-first_operand = ast.literal_eval(input(f"Enter the first operand: "))
-second_operand = ast.literal_eval(input(f"Enter the second operand: "))
+first_data = str(input(f"Enter the first operand: "))
+second_data = str(input(f"Enter the second operand: "))
 operation = str(input(f"Enter an operation: "))
 
-print(f"Type first operand: {type(first_operand)}")
-print(f"Type second operand: {type(second_operand)}")
+if '.' in first_data or '.' in second_data:
+    operand_one = float(first_data)
+    operand_two = float(second_data)
+else:
+    operand_one = int(first_data)
+    operand_two = int(second_data)
 
 if operation == '+':
-    print(f'Result = {first_operand + second_operand}')
+    print(f'Result = {operand_one + operand_two}')
 
 elif operation == '-':
-    print(f'Result = {first_operand - second_operand}')
+    print(f'Result = {operand_one - operand_two}')
 
-elif operation == '/' and second_operand == 0:
+elif operation == '/' and operand_two == 0:
     print("You can't dividing on zero")
 
 elif operation == '/':
-    print(f'Result = {first_operand / second_operand}')
+    print(f'Result = {operand_one / operand_two}')
 
 elif operation == '*':
-    print(f'Result = {first_operand * second_operand}')
+    print(f'Result = {operand_one * operand_two}')
 
 elif operation == '**':
-    print(f'Result = {first_operand ** second_operand}')
+    print(f'Result = {operand_one ** operand_two}')
 
 else:
     print(f"Invalid operation between numbers ")
