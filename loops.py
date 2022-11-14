@@ -1,62 +1,22 @@
-counter = 0
-elem = " "
-row_numbers = 3
-vowels = "AaEeIiOoUuYy"
-while counter < 1:
-    string = input('Enter any string: ')
-    upper = (''.join(x for x in string if x.isupper()))
-    print('Uppercase characters:', upper)
-    print(f"Index of spaces: {[pos for pos, char in enumerate(string) if char == elem]}")
-    final = [each for each in string if each in vowels]
-    print(f"Vowel letters: {final}")
-    bools = [c.isdigit() for c in string]
-    c = 0
-    for flag in bools:
-        if flag:
-            c +=1
-        else:
-            c = 0
-        if c == row_numbers:
-            print("3 digits in a row were entered. The loop is interrupted")
-            counter += 1
+user_sms = input('Enter any string: ')
+upper_case = ''
+vowels = ''
+digit_counter = 0
+
+for element in user_sms:
+    if element.isdigit():
+        digit_counter += 1
+        if digit_counter == 3:
+            print("The loop is interrupted")
             break
     else:
-        print("The loop has been completed successfully")
-        counter += 1
+        if element.isupper():
+            upper_case += element
+        if element in "AaEeIiOoUuYy":
+            vowels += element
+        indexes_space = [index for index, x in enumerate(user_sms) if x in ' ']
 
-while True:
-    first_data = str(input(f"Enter the first operand: "))
-    second_data = str(input(f"Enter the second operand: "))
-    operation = str(input(f"Enter an operation/Enter exit to complete: "))
-    if operation == "exit":
-        print("The process is completed")
-        break
-    if '.' in first_data:
-        operand_one = float(first_data)
-    else:
-        operand_one = int(first_data)
+print(upper_case)
+print(indexes_space)
+print(vowels)
 
-    if '.' in second_data:
-        operand_two = float(second_data)
-    else:
-        operand_two = int(second_data)
-
-    if operation == '+':
-        print(f'Result = {operand_one + operand_two}')
-
-    elif operation == '-':
-        print(f'Result = {operand_one - operand_two}')
-
-    elif operation == '/' and operand_two == 0:
-        print("You can't dividing on zero")
-
-    elif operation == '/':
-        print(f'Result = {operand_one / operand_two}')
-
-    elif operation == '*':
-        print(f'Result = {operand_one * operand_two}')
-
-    elif operation == '**':
-        print(f'Result = {operand_one ** operand_two}')
-    else:
-        print(f"Invalid operation between numbers ")
